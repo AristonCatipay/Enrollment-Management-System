@@ -5,13 +5,13 @@ import mysql.connector as mc
 
 mydb = mc.connect(
     host = "127.0.0.1",
-    user = "Ariston",
-    password = "1234567890",
-    database = "enrollment",
+    user = "root",
+    password = "",
+    database = "enrollment_system",
     auth_plugin='mysql_native_password',
     buffered = True
 )
-mycursor = mydb.cursor()
+mycursor = mydb.cursor() 
 if mydb.is_connected():
     print ("Enrollment System is connected to MySQL.")
 
@@ -199,9 +199,10 @@ class Ui_MainWindow(object):
 
 
                         # This will iterate over the records in the (recordsinstudent) and will set the values to specific columns.
-                        for i, (Student_ID, Student_Firstname, Student_Lastname, Student_Middleinitial, Student_Age, Student_Gender,BLK_And_Lot,Street,Subdivision,Barangay,City,Student_Contact_No,Student_Classification,isGrades,isForm136,isForm137,isBirthCertificate,isResidency,Class_ID) in enumerate(recordsinstudent):
+                        for i, (Student_ID, Student_Firstname, Student_Lastname, Student_Middlename, Student_Age, Student_Gender,BLK_And_Lot,Street,Subdivision,Barangay,City,Student_Contact_No,Student_Classification,isGrades,isForm136,isForm137,isBirthCertificate,isResidency,Class_ID) in enumerate(recordsinstudent):
                                 new_Student_ID = str(Student_ID)
                                 new_Student_Age = str(Student_Age)
+                                new_Student_Contact_No = str(Student_Contact_No)        
                                 new_isGrades= str(isGrades)
                                 new_isForm136= str(isForm136)
                                 new_isForm137= str(isForm137)
@@ -212,7 +213,7 @@ class Ui_MainWindow(object):
                                 item_Student_ID = QTableWidgetItem(new_Student_ID)
                                 item_Student_Firstname = QTableWidgetItem(Student_Firstname)
                                 item_Student_Lastname = QTableWidgetItem(Student_Lastname)
-                                item_Student_Middleinitial = QTableWidgetItem(Student_Middleinitial)
+                                item_Student_Middleinitial = QTableWidgetItem(Student_Middlename)
                                 item_Student_Age = QTableWidgetItem(new_Student_Age)
                                 item_Student_Gender = QTableWidgetItem(Student_Gender)
                                 item_Student_BLK_And_Lot = QTableWidgetItem(BLK_And_Lot)
@@ -220,7 +221,6 @@ class Ui_MainWindow(object):
                                 item_Student_Subdivision = QTableWidgetItem(Subdivision)
                                 item_Student_Barangay = QTableWidgetItem(Barangay)
                                 item_Student_City = QTableWidgetItem(City)
-                                new_Student_Contact_No = str(Student_Contact_No)
                                 item_Student_Contact_No = QTableWidgetItem(new_Student_Contact_No)
                                 item_Student_Classification = QTableWidgetItem(Student_Classification)
                                 item_isGrades = QTableWidgetItem(new_isGrades)
